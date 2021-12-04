@@ -46,7 +46,7 @@ return [
         ],
 
 
-        'mysql' => [
+        /* 'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => $DATABASE_URL('host'),
@@ -64,11 +64,11 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
-        ], 
+        ],  */
 
 
 
-       /*  'mysql' => [
+        'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -87,7 +87,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-  */
+  
         
         'pgsql' => [
             'driver' => 'pgsql',
