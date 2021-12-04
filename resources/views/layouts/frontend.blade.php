@@ -110,9 +110,20 @@
 
  <!-- Js Plugins -->
  
- <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}" ></script> 
+ <script src="frontend/js/jquery-3.3.1.min.js" ></script> 
+ <script src="frontend/js/bootstrap.min.js" ></script>
+ <script src="frontend/js/jquery-ui.min.js" ></script>
+ <script src="frontend/js/jquery.slicknav.js" ></script>
+ <script src="frontend/js/mixitup.min.js"></script>
+ <script src="frontend/js/owl.carousel.min.js"></script>
+ <script src="frontend/js/quantity.js"></script>
+ <script src="frontend/js/main.js"></script> 
+ <script src="frontend/js/cart.js"></script>
+
+
+{{--  <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}" ></script> 
  <script src="{{ asset('frontend/js/bootstrap.min.js') }}" ></script>
- {{-- <script src="{{ asset('frontend/js/jquery.nice-select.min.js') }}" ></script> --}}
+ {{-- <script src="{{ asset('frontend/js/jquery.nice-select.min.js') }}" ></script> 
  <script src="{{ asset('frontend/js/jquery-ui.min.js') }}" ></script>
  <script src="{{ asset('frontend/js/jquery.slicknav.js') }}" ></script>
  <script src="{{ asset('frontend/js/mixitup.min.js') }}"></script>
@@ -120,7 +131,7 @@
  <script src="{{ asset('frontend/js/quantity.js') }}"></script>
  <script src="{{ asset('frontend/js/main.js') }}"></script> 
  <script src="{{ asset('frontend/js/cart.js') }}"></script>
-
+ --}}
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
   @if(session('status'))
