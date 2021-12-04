@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\SuperAdmin\CategoryController;
+use App\Http\Controllers\SuperAdmin\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -53,7 +53,7 @@ Auth::routes();
 
 });
   Route::middleware(['auth','isAdmin']) -> group(function () {
-    Route::get('/dashboard', 'Admin\FrontendController@index');
+    Route::get('/dashboard', 'SuperAdmin\FrontendController@index');
         //return view('admin.dashboard');
         //return view('admin.index');
     });
