@@ -53,14 +53,14 @@ Auth::routes();
 
 });
   Route::middleware(['auth','isAdmin']) -> group(function () {
-    Route::get('/dashboard', 'ADMIN\FrontendController@index');
+    Route::get('/dashboard', 'Admin\FrontendController@index');
         //return view('admin.dashboard');
         //return view('admin.index');
     });
 
-    Route::get('categories','Admin\CategoryController@index');
-    Route::get('add-categories','Admin\CategoryController@add');
-    Route::post('insert-categories','Admin\CategoryController@insert');
+    Route::get('categories','CategoryController@index');
+    Route::get('add-categories','CategoryController@add');
+    Route::post('insert-categories','CategoryController@insert');
     Route::get('edit-categories/{id}',[CategoryController::class,'edit']);
     Route::patch('update-categories/{id}',[CategoryController::class,'update']);
     Route::get('delete-categories/{id}',[CategoryController::class,'destroy']);
