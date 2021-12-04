@@ -49,7 +49,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => $DATABASE_URL('host')?$DATABASE_URL('host'):null,
+            'host' => $DATABASE_URL('host'),
             'port' => $DATABASE_URL('port'),
             'database' => ltrim($DATABASE_URL),
             'username' => env('DB_USERNAME', 'forge'),
