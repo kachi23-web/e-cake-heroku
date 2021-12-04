@@ -58,9 +58,9 @@ Auth::routes();
         //return view('admin.index');
     });
 
-    Route::get('categories','CategoryController@index');
-    Route::get('add-categories','CategoryController@add');
-    Route::post('insert-categories','CategoryController@insert');
+    Route::get('categories',[CategoryController::class,'index']);
+    Route::get('add-categories',[CategoryController::class,'add']);
+    Route::post('insert-categories',[CategoryController::class,'insert']);
     Route::get('edit-categories/{id}',[CategoryController::class,'edit']);
     Route::patch('update-categories/{id}',[CategoryController::class,'update']);
     Route::get('delete-categories/{id}',[CategoryController::class,'destroy']);
