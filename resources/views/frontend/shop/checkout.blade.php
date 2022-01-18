@@ -42,62 +42,63 @@
         </div>
         <div class="checkout__form">
             <h4>Billing Details</h4>
-            <form action="#">
+            <form action="{{ url('place-order') }}" method="POST">
+                {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Fist Name<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" name="fname" placeholder="Enter First Name">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Last Name<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" class="form-control" value="{{ Auth::user()->lname }}" name="lname" placeholder="Enter last Name">
                                 </div>
                             </div>
                         </div>
-                        <div class="checkout__input">
+                        {{-- <div class="checkout__input">
                             <p>Country<span>*</span></p>
-                            <input type="text">
-                        </div>
+                            <input type="text" class="form-control" name="country" placeholder="country">
+                        </div> --}}
                         <div class="checkout__input">
                             <p>Address<span>*</span></p>
-                            <input type="text" placeholder="Street Address" class="checkout__input__add">
+                            <input type="text" placeholder="Street Address" class="checkout__input__add" value="{{ Auth::user()->address1 }}" name="address1">
                             <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
                         </div>
                         <div class="checkout__input">
                             <p>Town/City<span>*</span></p>
-                            <input type="text">
+                            <input type="text" value="{{ Auth::user()->city }}" name="city">
                         </div>
-                        <div class="checkout__input">
-                            <p>Country/State<span>*</span></p>
-                            <input type="text">
-                        </div>
-                        <div class="checkout__input">
+                         <div class="checkout__input">
+                            <p>State<span>*</span></p>
+                            <input type="text" value="{{ Auth::user()->state }}" name="state">
+                        </div> 
+                        {{-- <div class="checkout__input">
                             <p>Postcode / ZIP<span>*</span></p>
                             <input type="text">
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Phone<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" class="form-control" value="{{ Auth::user()->phone }}" name="phone" placeholder="Phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" class="form-control"  value="{{ Auth::user()->email }}" name="email" placeholder="Email">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input__checkbox">
                             <label for="acc">
                                 Create an account?
-                                <input type="checkbox" id="acc">
+                                <input type="checkbox" id="acc" class="form-control" name="create-account">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -109,7 +110,7 @@
                         </div>
                         <div class="checkout__input__checkbox">
                             <label for="diff-acc">
-                                Ship to a different address?
+                                Deliver to a different address?
                                 <input type="checkbox" id="diff-acc">
                                 <span class="checkmark"></span>
                             </label>
@@ -157,7 +158,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button type="submit" class="site-btn">PLACE ORDER</button>
+                            <button type="submit" class="site-btn">{{  }}PLACE ORDER</button>
                         </div>
                     </div>
                 </div>

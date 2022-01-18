@@ -4,9 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SuperAdmin\CategoryController;
 use App\Http\Controllers\SuperAdmin\ProductController;
+use App\Http\Controllers\SuperAdmin\OrderController;
+
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\ToolsCartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +29,9 @@ use App\Http\Controllers\Frontend\CheckoutController;
 // });
 
  Route::get('/',[FrontendController::class,'index']);
+ Route::get('/blog',[FrontendController::class,'blog']);
+ Route::get('/contact',[FrontendController::class,'contact']);
+
  Route::get('category',[FrontendController::class,'category']);
  Route::get('category/{slug}',[FrontendController::class,'viewcategory']);
  Route::get('category/{cate_slug}/{prod_slug}',[FrontendController::class,'productview']);
@@ -43,6 +51,8 @@ Auth::routes();
 /* Route::middleware(['auth','isAdmin']) -> group(function () {
     Route::get('/dashboard', 'ADMIN\FrontendController@index');
     });   */
+    
+
     Route::post('add-to-cart',[CartController::class,'addProduct']);
     Route::post('update-cart',[CartController::class,'updatecart']);
     Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
@@ -50,7 +60,9 @@ Auth::routes();
    Route::middleware(['auth'])->group(function (){
     Route::get('cart',[CartController::class,'viewcart']);
     Route::get('checkout',[CheckoutController::class,'index']);
+    Route::resource('tools',ToolsCartController::class);
 
+    //Route::get('my-orders',[UserController::class,'index']);
 });
   Route::middleware(['auth','isAdmin']) -> group(function () {
     Route::get('/dashboard', 'SuperAdmin\FrontendController@index');
@@ -74,3 +86,13 @@ Auth::routes();
     Route::get('edit-products/{id}',[ProductController::class,'edit']);
     Route::patch('update-products/{id}',[ProductController::class,'update']);
     Route::get('delete-products/{id}',[ProductController::class,'destroy']);
+
+   // Route::get('users',[FrontendController::class,'users']);
+Route::middleware(['auth'])->group(function (){
+    Route::get('cart',[CartController::class,'viewcart']);
+    Route::get('checkout',[CheckoutController::class,'index']);
+    Route::post('place-order',[CheckoutController::class,'placeorder']);
+
+
+    Route::get('my-orders',[UserController::class,'index']);
+});

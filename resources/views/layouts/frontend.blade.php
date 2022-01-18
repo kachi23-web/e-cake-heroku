@@ -16,7 +16,7 @@
 
     <!-- Css Styles -->
 
-    <link href="frontend/css/bootstrap.min.css" rel="stylesheet">
+   {{--  <link href="frontend/css/bootstrap.min.css" rel="stylesheet">
     <link href="frontend/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link href="frontend/css/elegant-icons.css" rel="stylesheet">
@@ -24,10 +24,10 @@
     <link href="frontend/css/jquery-ui.min.css" rel="stylesheet">
     <link href="frontend/css/owl.carousel.min.css" rel="stylesheet">
     <link href="frontend/css/slicknav.min.css" rel="stylesheet">
-    <link href="frontend/css/style.css" rel="stylesheet">
+    <link href="frontend/css/style.css" rel="stylesheet"> --}}
     
 
-    {{-- <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link href="{{ asset('frontend/css/elegant-icons.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
     <link href="{{ asset('frontend/css/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/slicknav.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet"> 
     
     
     <!-- <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
@@ -110,7 +110,7 @@
 
  <!-- Js Plugins -->
  
- <script src="frontend/js/jquery-3.3.1.min.js" ></script> 
+ {{-- <script src="frontend/js/jquery-3.3.1.min.js" ></script> 
  <script src="frontend/js/bootstrap.min.js" ></script>
  <script src="frontend/js/jquery-ui.min.js" ></script>
  <script src="frontend/js/jquery.slicknav.js" ></script>
@@ -118,12 +118,12 @@
  <script src="frontend/js/owl.carousel.min.js"></script>
  <script src="frontend/js/quantity.js"></script>
  <script src="frontend/js/main.js"></script> 
- <script src="frontend/js/cart.js"></script>
+ <script src="frontend/js/cart.js"></script> --}}
 
 
-{{--  <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}" ></script> 
+  <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}" ></script> 
  <script src="{{ asset('frontend/js/bootstrap.min.js') }}" ></script>
- {{-- <script src="{{ asset('frontend/js/jquery.nice-select.min.js') }}" ></script> 
+ {{-- <script src="{{ asset('frontend/js/jquery.nice-select.min.js') }}" ></script> --}}
  <script src="{{ asset('frontend/js/jquery-ui.min.js') }}" ></script>
  <script src="{{ asset('frontend/js/jquery.slicknav.js') }}" ></script>
  <script src="{{ asset('frontend/js/mixitup.min.js') }}"></script>
@@ -131,7 +131,7 @@
  <script src="{{ asset('frontend/js/quantity.js') }}"></script>
  <script src="{{ asset('frontend/js/main.js') }}"></script> 
  <script src="{{ asset('frontend/js/cart.js') }}"></script>
- --}}
+ 
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
   @if(session('status'))

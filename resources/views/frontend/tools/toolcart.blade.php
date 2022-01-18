@@ -1,14 +1,11 @@
-
 @extends('layouts.frontend')
 
-@section('title')
-        My cart page
-@endsection
+@section('title',$products->name)
+
 
 @section('content')
 
 
-<!-- Hero Section Begin -->
 <section class="hero"> 
 
     @include('layouts.partials.sidebar2')
@@ -38,6 +35,14 @@
             <div class="col-lg-12">
                 <div class="shoping__cart__table">
                     <table class="product_data">
+                        <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+
+                        @if($item->$products->qty >= $item->prod_qty)
+                            <label class="badge bg-success">In stock<label>
+                        @else
+                            <label class="badge bg-danger">Out of stock<label>
+                        @endif
+
                         <thead>
                             <tr>
                                 <th class="shoping__product">Products</th>
@@ -48,7 +53,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if($cartitems->count() > 0)
                             @php $total = 0; @endphp
                             @php $subtotal =0; @endphp
 
@@ -88,14 +92,6 @@
 
                             @php $total += $item->products->selling_price *  $item->prod_qty + 500; @endphp
                             @endforeach
-                           
-                       
-                            
-                        @else
-                                <h2> Your <i class="fa fa-shopping-cart"></i> Cart is empty </h2>
-                                <a href="{{ url('categories ') }}" class="btn btn-outline-primary float-end">Continue Shopping </a>
-                            
-                        @endif
                           
                         </tbody>
                     </table>

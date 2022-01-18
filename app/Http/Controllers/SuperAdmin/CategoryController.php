@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
     //
     public function index()

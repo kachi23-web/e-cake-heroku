@@ -41,12 +41,11 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="./">Home</a></li>
-            <li><a href="{{ url('category') }}">Shop</a></li>
-           
-             <li><a href="./contact.html">About</a></li>
-            
-            <li><a href="./contact.html">Contact</a></li>
+            <li class="active"><a href="/">Home</a></li>
+                        <li ><a href="{{ url('category') }}">Shop</a></li>
+                       
+                        <li><a href="./blog">Blog</a></li>
+                        <li><a href="./contact">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>

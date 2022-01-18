@@ -123,46 +123,54 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container">
+                <div class="container">
                     <div class="col-md-12 col-md-3">
 
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="" style="color: rgb(5, 5, 5)">Flavour</label>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                        <input type="checkbox" name="flav">
-                        <input type="checkbox" name="flav">
-                        <input type="checkbox" name="flav">
-                    </div>    
-                        <div class="col-md-6 mb-3">
-                            <label for="" style="color: rgb(5, 5, 5)">Color</label>
-                            <input type="checkbox" class=" " name="color">
-                        </div> 
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{-- <label for="" style="color: rgb(5, 5, 5)">Flavour</label>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                <input type="checkbox" name="flav">
+                                <input type="checkbox" name="flav">
+                                <input type="checkbox" name="flav">
+                            </div>    
+                                <div class="col-md-6 mb-3">
+                                    <label for="" style="color: rgb(5, 5, 5)">Color</label>
+                                    <input type="checkbox" class=" " name="color">
+                                </div>  --}}
 
                         <select class="form-select" name="tier_id">
-                            <option value="">Select the tiers</option>
+                            <option value="">Select cake flavor</option>
+                            <option value="">Vanilla</option>
+                            <option value="">Red Velvet</option>
+                            <option value="">Chocolate</option>
                             </select>
 
                             <select class="form-select" name="size_id">
                             <option value="">Select size</option>
+                            <option value="">"8"</option>
+                            <option value="">"10"</option>
+                            <option value="">"12"</option>
+                            <option value="">"14"</option>
+                            <option value="">"16"</option>
                             </select>
 
                             <div class="col-md-12 mb-3">
                             <label for="">Cake message</label>
-                        <textarea  row="3" name="cake_message" placeholder= "type your cake message here" class="form-control"></textarea>
+                            <textarea  row="3" name="cake_message" placeholder= "type your cake message here" class="form-control"></textarea>
                             </div>
-                        <div class="col-md-12 mb-3">
-                            <label for="">Order Details</label>
-                            <textarea row="3 " name="order_details" placeholder= "describe exactly what you want here" class="form-control"></textarea>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <input type="file" name="image" class="form-control">
-                        </div>
-                    </div>
-                    </form>
+                                <div class="col-md-12 mb-3">
+                                    <label for="">Order Details</label>
+                                    <textarea row="3 " name="order_details" placeholder= "describe exactly what you want here" class="form-control"></textarea>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <input type="file" name="image" class="form-control">
+                                </div>
+                      </div>
+                     </form>
                     </div>
                 </div>
                            {{--  <div class="row">

@@ -34,7 +34,8 @@
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
+                                                {{-- {{ __('Logout') }} --}}
+                                                {{ __(Auth::user()->name) }}
                                         </a>
           
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -73,11 +74,11 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li class="active"><a href="{{ url('category') }}">Shop</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li ><a href="{{ url('category') }}">Shop</a></li>
                        
-                        <li><a href="./blog.html">About</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="./blog">Blog</a></li>
+                        <li><a href="./contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
