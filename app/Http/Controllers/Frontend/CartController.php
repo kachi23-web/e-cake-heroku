@@ -7,14 +7,33 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Size;
 
 
 class CartController extends Controller
 {
-    public function addProduct(Request $request) 
+    
+    
+
+    public function insert(Request $request) 
     {
+        
+    
         $product_id = $request->input('product_id');
         $product_qty = $request->input('product_qty');
+        $flavour_id = $request->input('flavour_id');
+        $size_id = $request->input('size_id');
+        $cake_message = $request->input('cake_message');
+       // $total_price = $request->input('selling_price');
+
+
+        // $cart->size_id = $request->input('size_id');
+
+       /*  
+        $flavour = $request->input('flavour');
+        $size_id = $request->input('size_id');
+        $order_details = $request->input('order_details');
+        $total_price = $request->input('total_price');  */
 
         if(Auth::check())
         {
@@ -33,8 +52,23 @@ class CartController extends Controller
                     $cartItem->prod_id = $product_id;
                     $cartItem->user_id = Auth::id();
                     $cartItem->prod_qty = $product_qty;
+                    $cartItem->size_id = $size_id;
+                    $cartItem->flavour_id = $flavour_id;
+                    $cartItem->cake_message = $cake_message;
+                    //$cartItem->total_price = $total_price;
+
+
+                    //inputs from shop details
+                    /* $cartItem->cake_message = $cake_message;
+                    $cartItem->flavour = $flavour;
+                    $cartItem->size_id = $size_id;
+                    $cartItem->order_details = $order_details;
+                    $cartItem->total_price = $total_price; */
+
+
                     $cartItem->save();
-                    return response()->json(['status' => $prod_check->name."Added to cart"]);
+                    return response()->json(['status' => $prod_check->name  .  "Added to cart"  .  'hello']);
+                    //return redirect('frontend.shop.cart', compact('cartitems'));
                 }
                 
     
@@ -42,7 +76,7 @@ class CartController extends Controller
         }
         else
         {
-            return response()->json(['status' => "Login to Continue"]);
+            return response()->json(['status' => "Login to Continue click here "]);
         }
 
     
@@ -88,7 +122,7 @@ class CartController extends Controller
     }
     else
     {
-        return response()->json(['status' => "Login to Continue"]);
+        return response()->json(['status' => "Login to Continue".['category']]);
     }
    }
  

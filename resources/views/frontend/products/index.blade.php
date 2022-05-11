@@ -25,7 +25,7 @@
                         <div class="breadcrumb__option">
                             <a href="./">Home</a>
                             <a href="{{ url('category') }}">Shop</a>
-                            <span>'Category/ {{ $category->name }}'</span>
+                            {{-- <span>'Category/ {{ $category->name }}'</span> --}}
                         </div>
                     </div>
                 </div>

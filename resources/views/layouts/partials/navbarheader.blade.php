@@ -3,11 +3,11 @@
     <div class="header__top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="header__top__left">
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -26,15 +26,12 @@
                         </div>
 
 
-                        <div class="header__top__right__auth">
-                            @if (Route::has('login'))
-                                {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
+                           {{--  @if (Route::has('login'))
                                     @auth
-                                        {{-- <a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500">Home</a> --}}
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                                {{-- {{ __('Logout') }} --}}
+                                                
                                                 {{ __(Auth::user()->name) }}
                                         </a>
           
@@ -43,20 +40,60 @@
                                     </form>
                             @else
                                      <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500"><i class="fa fa-user"></i> Login</a>
-                            {{-- <a href="login.html"> --}}
-                        </div> &nbsp
+                        
+                        </div> &nbsp --}}
                         {{--<div class="dropdown-divider"></div>
                          <a class="dropdown-item" href="#">Log out</a> --}}
                         
                     
 
-                        <div class="header__top__right__auth">
+                       {{--  <div class="header__top__right__auth">
                             @if (Route::has('register'))
                             <a href="{{ route('register') }}"<i class="fa fa-user"></i> Register</a>
                             @endif
                             @endauth
                         </div>
+                        @endif --}}
+
+{{-- working on the navdar --}}
+                <div class="header__top__right__auth">
+
+
+                        @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
                         @endif
+
+                        {{-- @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif --}}
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <a href="/admin" class="dropdown-item">Dashboard</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
+
+                    </div>
+
 
 
                     </div>

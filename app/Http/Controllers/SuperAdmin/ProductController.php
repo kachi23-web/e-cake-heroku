@@ -79,7 +79,7 @@ class ProductController extends Controller
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
         $products->description = $request->input('description');
-        $products->selling_price = $request->input('selling_price');
+        $products->selling_price = $request->input('selling_price'); 
         $products->status = $request->input('status') == TRUE? '1':0;
         $products->trending = $request->input('trending') == TRUE? '1':0;
         $products->meta_title = $request->input('meta_title');

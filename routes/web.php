@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\ShopingController;
 use App\Http\Controllers\Frontend\ToolsCartController;
 
 
@@ -34,7 +35,8 @@ use App\Http\Controllers\Frontend\ToolsCartController;
 
  Route::get('category',[FrontendController::class,'category']);
  Route::get('category/{slug}',[FrontendController::class,'viewcategory']);
- Route::get('category/{cate_slug}/{prod_slug}',[FrontendController::class,'productview']);
+ Route::Any('category/{cate_slug}/{prod_slug}',[FrontendController::class,'productview']);
+ 
 
 Auth::routes();
 
@@ -53,7 +55,7 @@ Auth::routes();
     });   */
     
 
-    Route::post('add-to-cart',[CartController::class,'addProduct']);
+    Route::post('add-to-cart',[CartController::class,'insert']);
     Route::post('update-cart',[CartController::class,'updatecart']);
     Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
 
@@ -90,9 +92,16 @@ Auth::routes();
    // Route::get('users',[FrontendController::class,'users']);
 Route::middleware(['auth'])->group(function (){
     Route::get('cart',[CartController::class,'viewcart']);
+    // Route::get('addDetails',[CartController::class,'add']);
+    Route::Post('addDetails',[CartController::class,'insert']);
     Route::get('checkout',[CheckoutController::class,'index']);
-    Route::post('place-order',[CheckoutController::class,'placeorder']);
+   // Route::post('addDetails',[ShopingController::class,'addDetail']);
+    Route::Any('place-order',[CheckoutController::class,'placeorder']);
 
 
     Route::get('my-orders',[UserController::class,'index']);
 });
+// Route::get('/', function () {
+//     $size = App\Models\Size::all();
+//     return view('welcome',['size' => $size]);
+// });

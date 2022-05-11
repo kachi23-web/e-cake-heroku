@@ -73,7 +73,7 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Product Details Section Begin -->
-<section class="product-details spad ">
+<section class="product-details spad product_data ">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 ">
@@ -93,7 +93,7 @@
                          <div class="categories__item set-bg " data-setbg="{{ asset('assets/uploads/products/'.$prod->image) }}" alt="product image">
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach 
                 </div>
             </div>
         </div>
@@ -109,7 +109,7 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div>
-                    <div class="product__details__price">&#8358 {{ $products->selling_price}}</div>
+                    <div class="product__details__price prod_price">&#8358 {{ $products->selling_price}}</div>
                     {{-- <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                         vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                         quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p> --}}
@@ -118,88 +118,73 @@
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <input type="hidden" value="{{ $products->id }}" class="prod_id">
-                            <div class="pro-qty">
+                            {{-- <div class="pro-qty">
                                 <input type="text" class="qty-input" value="1">
+                            </div> --}}
+
+                            <div class=" mt-2 ">
+                            <div class="col-md-2">
+                                <label for="Quantity"></label>
+                                <div class="input-group-text-center mb-6 row pro-qty">
+                                    <button class=" changeQuantity dec  qtybtn">-</button>
+                                    <input type="text" name="quantity"value="1" class="form-control qty-input" />
+                                    <button class=" changeQuantity inc  qtybtn">+</button>
+
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
-                <div class="container">
-                    <div class="col-md-12 col-md-3">
 
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            @csrf
+                    <form action="{{ url('addDetails') }}" method="POST" enctype="multipart/form-data">
+                        {{-- method="PUT" --}}
+                        @csrf
+                            <div class="container">
+                            <div class="col-md-12 col-md-3">
+
+                       
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    {{-- <label for="" style="color: rgb(5, 5, 5)">Flavour</label>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                <input type="checkbox" name="flav">
-                                <input type="checkbox" name="flav">
-                                <input type="checkbox" name="flav">
-                            </div>    
-                                <div class="col-md-6 mb-3">
-                                    <label for="" style="color: rgb(5, 5, 5)">Color</label>
-                                    <input type="checkbox" class=" " name="color">
-                                </div>  --}}
+                                    
 
-                        <select class="form-select" name="tier_id">
+                        <select class="form-select" name="flavour_id" >
                             <option value="">Select cake flavor</option>
-                            <option value="">Vanilla</option>
-                            <option value="">Red Velvet</option>
-                            <option value="">Chocolate</option>
-                            </select>
+                            @foreach($flavours as $flavour)
+                             <option value="{{ $flavour->id }}" class="flav_select">{{ $flavour->cake_flavour }}</option>
+                             @endforeach 
+                        </select>
 
-                            <select class="form-select" name="size_id">
-                            <option value="">Select size</option>
-                            <option value="">"8"</option>
-                            <option value="">"10"</option>
-                            <option value="">"12"</option>
-                            <option value="">"14"</option>
-                            <option value="">"16"</option>
+                              <select class="form-select" name="size_id" >
+                                <option value="">Select cake Size</option>
+                             @foreach($sizes as $size)
+                             <option value="{{ $size->id }}" class="size_select">{{ $size->cake_size }}</option>
+                             @endforeach 
+            
                             </select>
-
+                            
                             <div class="col-md-12 mb-3">
                             <label for="">Cake message</label>
-                            <textarea  row="3" name="cake_message" placeholder= "type your cake message here" class="form-control"></textarea>
+                            <textarea  row="3" name="cake_message" placeholder= "Enter your cake message here: Happy Anniversay, Happy Birthday Onyeka" class="form-control message"></textarea>
                             </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="">Order Details</label>
-                                    <textarea row="3 " name="order_details" placeholder= "describe exactly what you want here" class="form-control"></textarea>
+                                    <textarea row="3 " name="order_details" placeholder= "describe exactly what you want here: icing(fondant, butter cream eg), Color (red and green)" class="form-control"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <input type="file" name="image" class="form-control">
+                                    <input type="file" name="Custom_image" class="form-control">
                                 </div>
                       </div>
                      </form>
                     </div>
                 </div>
-                           {{--  <div class="row">
-                            <select class="form-select" name="flav_id">
-                            <option value="">Select the flavour</option>
-                            @foreach($tiers as $item)
-                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
-                            </select>
+                            
+                                
 
-                            <select class="form-select" name="flav_id">
-                                <option value="">Select the flavour</option>
-                                @foreach($flav as $item)
-                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                                </select>
-                            </div>
-                            <select class="form-select" name="size_id">
-                                <option value="">Select the size</option>
-                                @foreach($size as $item)
-                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                                </select>
-
-                        </div> --}}                        
+                        </div>                    
                             
 
-                        
-                    <a href="#" class="primary-btn addToCartBtn">ADD TO CARD<i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" class="primary-btn buyNow">BUY NOW<i class="fa fa-shopping-buy"></i></a>                        
+                    <button type="submit" class="primary-btn addToCartBtn">ADD TO CARD<i class="fa fa-shopping-cart"></i></button>
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                     <ul>
                         <li><b>Availability</b> <span>In Stock</span></li>
@@ -216,7 +201,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-12">
+
+           
+
+          {{--  <div class="col-lg-12">
                 <div class="product__details__tab">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
@@ -232,7 +220,7 @@
                                 aria-selected="false">Reviews <span>(1)</span></a>
                         </li>
                     </ul>
-                    <div class="tab-content">
+                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6>Products Infomation</h6>
@@ -294,9 +282,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
-        </div>
+        </div>--}}
     </div>
 </section>
 <!-- Product Details Section End -->

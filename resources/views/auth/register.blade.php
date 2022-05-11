@@ -20,10 +20,10 @@
      --}}
 
 <div class="container-fluid">
-    <div class="row justify-content-center form">
+    <div class="row justify-content-center ">
         <div class="col-md-8">
-            <div class="">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card form">
+                <div class="">{{ __('Register') }}</div>
 
                 <div class="">
                     <form method="POST" action="{{ route('register') }}">

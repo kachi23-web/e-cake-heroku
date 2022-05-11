@@ -33,8 +33,12 @@
 
 <!-- Shoping Cart Section Begin -->
 <section class="shoping-cart spad">
-    <div class="container">
+    <div class="container ">
+        @php $total = 0; @endphp
+        @php $subtotal =0; @endphp
+
         <div class="row">
+           
             <div class="col-lg-12">
                 <div class="shoping__cart__table">
                     <table class="product_data">
@@ -48,36 +52,42 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
                             @if($cartitems->count() > 0)
-                            @php $total = 0; @endphp
-                            @php $subtotal =0; @endphp
+                             @php $total = 0; @endphp
+                            @php $subtotal =0; @endphp 
 
                             @foreach ($cartitems as $item)
                             <tr >
-                    
+                                @php $subtotal += $item->products->selling_price *  $item->prod_qty; @endphp
+
                                 <td class="shoping__cart__item">
                                     <img src="{{ asset('assets/uploads/products/'.$item->products->image) }}" height="70px" width="70px" alt="">
                                     <h5>{{ $item->products->name }}</h5>
                                 </td>
                                 <td class="shoping__cart__price">
-                                        {{$item->products->selling_price}}
+                                        {{$item->products->selling_price * $item->prod_qty}}
                                 </td>
-                                <td class="shoping__cart__quantity">
+                                <td class="shoping__cart__quantity product_data">
 {{--                                     <input type="hidden" class="prod_id" >
  --}}                                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                                     <div class="quantity"> 
                                         <div class="pro-qty">
-                                            <input type="text" name="quantity" value="{{ $item->prod_qty }}" class="qty-input">
-                                    
+                                        
+                                            <span class=" changeQuantity dec decrement-btn  qtybtn">-</span>
+                                            <input type="text" name="quantity qty-input" class="form-control qty-input" value="{{ $item->prod_qty }}" >
+                                            <span class=" changeQuantity inc decrement-btn  qtybtn">+</span>
                                         </div>
                                     </div>
+
+                                   
                                 </td>
                                         
                                     
-                                <td class="shoping__cart__total">
-                                    @php $subtotal = $item->products->selling_price *  $item->prod_qty; @endphp
-
-                                    {{ $subtotal }}
+                                <td class="shoping__cart__total" value="{{ $item->$subtotal }}">
+                                     @php $subtotal += $item->products->selling_price *  $item->prod_qty; @endphp 
+{{-- 
+                                    {{ $subtotal }} --}}
                                 </td>
                                 
                                 <td class="shoping__cart__item__close">
@@ -92,11 +102,11 @@
                        
                             
                         @else
-                                <h2> Your <i class="fa fa-shopping-cart"></i> Cart is empty </h2>
-                                <a href="{{ url('categories ') }}" class="btn btn-outline-primary float-end">Continue Shopping </a>
+                                <h4> Your <i class="fa fa-shopping-cart"></i> Cart is empty </h4>
+                                <a href="{{ url('category ') }}" class="btn btn-danger float-end">Continue Shopping </a>
                             
                         @endif
-                          
+                          <div class="col-lg-6" style="height: 50px"></div>
                         </tbody>
                     </table>
                 </div>
@@ -105,9 +115,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="{{ url('category') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                        Upadate Cart</a>
+                    <a href="{{ url('/') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    <a href="{{ url('category') }}" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        Update Cart</a>
                 </div>
             </div>
             {{-- <div class="col-lg-6">
@@ -125,7 +135,7 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal <span>$454.98</span></li>
+                        <li>Subtotal <span>{{ $subtotal }}</span></li>
                         <li>Total <span>{{ $total }}<span></li>
                     </ul>
                     <a href="{{ url('checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>

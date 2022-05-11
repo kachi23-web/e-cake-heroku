@@ -30,18 +30,7 @@
           </a>
         </li>
         
-        {{-- <li class="nav-item ">
-          <a class="nav-link" href="./map.html">
-            <i class="material-icons">location_ons</i>
-            <p>Maps</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="./notifications.html">
-            <i class="material-icons">notifications</i>
-            <p>Notifications</p>
-          </a>
-        </li> --}}
+        
         <li class="nav-item {{ Request::is('categories')? 'active':''}}">
           <a class="nav-link" href="{{ url('categories') }}">
             <i class="material-icons">person</i>

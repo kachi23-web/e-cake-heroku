@@ -42,14 +42,14 @@
         </div>
         <div class="checkout__form">
             <h4>Billing Details</h4>
-            <form action="{{ url('place-order') }}" method="POST">
+            <form id="makePaymentForm" action="{{ url('place-order') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
-                                    <p>Fist Name<span>*</span></p>
+                                    <p>First Name<span>*</span></p>
                                     <input type="text" class="form-control" value="{{ Auth::user()->name }}" name="fname" placeholder="Enter First Name">
                                 </div>
                             </div>
@@ -125,16 +125,29 @@
                         <div class="checkout__order">
                             <h4>Your Order</h4>                                
                            
-                            <div class="checkout__order__products">Products <span>Total</span></div>
+                            <div class="checkout__order__products">Products &nbsp;&nbsp;
+                                <thead>Quantity</thead> &nbsp;&nbsp;
+                                 <span>Total</span>
+                            </div>
+                            @php $grandtotal = 0; @endphp
+                            @php $subtotal = 0; @endphp
                             @foreach ($cartItems as $item)
 
                             <ul>
-                                <li>  {{ $item->products->name }} <span>  {{ $item->products->selling_price }}</span></li>
+                                <li>  {{ $item->products->name }} 
+                                        <span> {{ $item->products->prod_qty }} </span>
+                                    <span>  {{ $item->products->selling_price }}</span></li>
                                 
                             </ul>
+                            @php $subtotal += $item->products->selling_price; @endphp
+                            @php $grandtotal += $item->products->selling_price *  $item->prod_qty + 500; @endphp
+
                             @endforeach
-                            <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                            <div class="checkout__order__total">Total <span></span></div>
+                            <div class="checkout__order__subtotal">Subtotal <span>{{ $subtotal }}</span></div>
+                            
+                            <div class="checkout__order__total">Total <span>{{  $grandtotal }}</span></div>
+                            
+
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">
                                     Create an account?
@@ -158,8 +171,9 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button type="submit" class="site-btn">{{  }}PLACE ORDER</button>
-                        </div>
+                            <button type="submit"id="submit-btn" class="site-btn">PLACE ORDER </button>
+{{--                             <button type="submit" class="site-btn"><a href="https://ravesandbox.flutterwave.com/pay/z8zdgoswqelx"> PLACE ORDER</a> </button>
+ --}}                        </div>
                     </div>
                 </div>
             </form>
@@ -167,4 +181,66 @@
     </div>
 </section>
 <!-- Checkout Section End -->
-@endsection
+@endsection 
+
+<script src="{{ asset('jquery-3.6.0.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+
+
+
+    <script>
+        
+
+        document.getElementById("submit-btn").addEventListener("click", function(event) {
+            event.preventDefault()
+            makePayment()
+            error: function(e)
+    {
+       console.log(e);
+    }
+   
+        });
+
+        function makePayment() {
+            FlutterwaveCheckout({
+                public_key: "FLWPUBK_TEST-3d322cefd02662ffe45d3b181b781950-X",
+                tx_ref: "RX1",
+                amount: 10,
+                currency: "USD",
+                country: "US",
+                payment_options: " ",
+                redirect_url: // specified redirect URL
+                    "https://callbacks.piedpiper.com/flutterwave.aspx?ismobile=34",
+                meta: {
+                    consumer_id: 23,
+                    consumer_mac: "92a3-912ba-1192a",
+                },
+                customer: {
+                    email: "cornelius@gmail.com",
+                    phone_number: "08102909304",
+                    name: "Flutterwave Developers",
+                },
+                callback: function(data) {
+                    console.log(data);
+                },
+                onclose: function() {
+                    // close modal
+                },
+                customizations: {
+                    title: "My store",
+                    description: "Payment for items in cart",
+                    logo: "https://assets.piedpiper.com/logo.png",
+                },
+            });
+        }
+        // }
+    </script>

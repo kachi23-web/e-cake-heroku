@@ -71,7 +71,10 @@
  --}}                                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                                     <div class="quantity"> 
                                         <div class="pro-qty">
+                                            <span class=" changeQuantity dec  qtybtn">-</span>
                                             <input type="text" name="quantity" value="{{ $item->prod_qty }}" class="qty-input">
+                                            <span class=" changeQuantity inc  qtybtn">+</span>
+
                                     
                                         </div>
                                     </div>

@@ -8,8 +8,8 @@
                         <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Address: 60-49 Road 11378 Abuja</li>
-                        <li>Phone: +65 11.188.888</li>
+                        <li>Address: NO 17, OPPOSITE PHONIEX HOTEL, TUNGA MARKET, MINNA, NIGER STATE.</li>
+                        <li>Phone: +234 909-0481-721</li>
                         <li>Email: hello@cross_Wood</li>
                     </ul>
                 </div>

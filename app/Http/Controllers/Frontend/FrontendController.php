@@ -6,11 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Size;
+use App\Models\Flavour;
 
 
 class FrontendController extends Controller
 {
     //
+    
+
     public function index()
     {
         
@@ -62,7 +66,12 @@ class FrontendController extends Controller
             {
                 $products = Product::where('slug',$prod_slug)->first();
                 $featured_products = Product::where('trending','1')->take(15)->get();
-                return view('frontend.shop.shop-details',compact('products','featured_products'));
+                $sizes = Size::all();
+                $flavours = Flavour::all();
+                $message = ('cake_message');
+               // dd ($size[0]);
+        
+             return view('frontend.shop.shop-details',compact('products','featured_products','sizes','flavours'));
             }
             else{
                 return redirect('/')->with('status',"broken link");

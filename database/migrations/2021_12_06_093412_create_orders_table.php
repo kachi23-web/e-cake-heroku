@@ -25,11 +25,17 @@ class CreateOrdersTable extends Migration
             $table->string('area');
             $table->string('LGA');
             $table->tinyInteger('status')->default('0');
-            $table->string('message')->nullable();
+            $table->string('total_price')->nullable();
+            
+            $table->string('cake_message')->nullable();
+            $table->string('flavour')->nullable();
+            $table->string('size_id')->nullable();
+            $table->string('order_details')->nullable();
             $table->string('tracking_no'); 
             $table->timestamps();
         });
     }
+   
 
     /**
      * Reverse the migrations.

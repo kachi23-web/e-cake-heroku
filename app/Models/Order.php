@@ -23,7 +23,10 @@ class Order extends Model
         'total_price',
         'pincode',
         'status',
-        'message',
+        'cake_message',
+        'flavour',
+        'size_id',
+        'order_details',
         'tracking_no',
 
     ];

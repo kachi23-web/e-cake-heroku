@@ -2,36 +2,38 @@
 
 @section('content')
 
- <div class="form">
+
+{{-- 
+ <div class="form"> 
     <h4 class="form-heading"> Login form</h4>
+    
+
      <form method="POST" action="{{ route('login') }}">
          @csrf
+            <div class="form-group row">
 
-         <div class="form-group row">
+            <label for="fname">Username</label>
+            
+            <div class="col-md-6">
+            <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-         <label for="fname">Username</label>
-         
-         <div class="col-md-6">
-         <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-         </div>
-         </div>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+            </div> 
+            </div>--}}
   {{-- <form action="/action_page.php">
     {{-- <label for="fname">Username</label>
     <input type="text" id="username" name="username" placeholder="Username..">
 
     <label for="lname">Password</label>
-    <input type="text" id="Password"> --}}
-
+    <input type="text" id="Password"> 
 
         <div class="form-group row">
         <label for="password">Password</label>
-        <div class="col-md-6">
+        <div class="col-md-6 ">
         <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -66,19 +68,40 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+
             </div>
         </div>
+        
+        <div class="form-group form-footer">
+           <span class=""> Not a yet registered? <a href="{{ route('register') }}">Sign up now</a></span>
+        </div>
   </form>
-</div> 
 
-{{-- <div class="container ">
+</div> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="container ">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <h4 class="form-heading"> Login form</h4>
-                <div class="card-header">{{ __('Login') }}</div>
+            <div class="card form">
+                <div class="">{{ __('Login') }}</div>
 
-                <div class="card-body form">
+                <div class="card-body ">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -124,7 +147,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-danger">
                                     {{ __('Login') }}
                                 </button>
 
@@ -135,10 +158,15 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group form-footer">
+                            <span class=""> Not a yet registered? <a href="{{ route('register') }}">Sign up now</a></span>
+                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div> --}}
+</div> 
 @endsection
