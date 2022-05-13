@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+use App\Models\OrderItem;
 
 class Order extends Model
 {
@@ -11,6 +14,7 @@ class Order extends Model
 
     protected $table = 'orders';
     protected $fillable = [
+        
         'user_id',
         'fname',
         'lname',
@@ -30,4 +34,30 @@ class Order extends Model
         'tracking_no',
 
     ];
+    public function orderitems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    /* public function users()
+    {
+        return $this->hasMany(User::class);
+    } 
+
+    public function products(): BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'prod_id', 'id');
+    }*/
+
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    
 }

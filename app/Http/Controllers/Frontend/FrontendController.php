@@ -15,13 +15,24 @@ class FrontendController extends Controller
     //
     
 
-    public function index()
+    public function index(Request $id)
+    
     {
+        /* if(Category::where('slug',$slug)->exists())
+        { */
         
         $featured_products = Product::where('trending','1')->take(15)->get();
         $trending_category = Category::where('popular','1')->take(15)->get();
-        return view('index', compact('featured_products','trending_category'));
-    }
+        $wedding_cakes = Category::where('id','5')->take(15)->get();
+
+        
+        
+        //$category = Category::where('id')->get();
+        $category = Category::where('id',$id)->take(15)->first();
+        return view('index', compact('featured_products','trending_category','wedding_cakes','category'));
+        
+    
+}
 
     public function blog()
     {

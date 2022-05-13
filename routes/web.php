@@ -12,7 +12,10 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\ShopingController;
 use App\Http\Controllers\Frontend\ToolsCartController;
+use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\SuperAdmin\DashboardController;
 
+use App\Http\Controllers\SuperAdmin\FrontendController as SuperAdminFrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +67,10 @@ Auth::routes();
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::resource('tools',ToolsCartController::class);
 
-    //Route::get('my-orders',[UserController::class,'index']);
+    Route::get('my-orders',[UserController::class,'index']);
+    Route::get('view-order/{id}',[UserController::class,'view']);
+
+    Route::get('wishlist', [WishlistController::class,'index']);
 });
   Route::middleware(['auth','isAdmin']) -> group(function () {
     Route::get('/dashboard', 'SuperAdmin\FrontendController@index');
@@ -78,7 +84,12 @@ Auth::routes();
     Route::get('edit-categories/{id}',[CategoryController::class,'edit']);
     Route::patch('update-categories/{id}',[CategoryController::class,'update']);
     Route::get('delete-categories/{id}',[CategoryController::class,'destroy']);
-
+    Route::get('orders',[OrderController::class,'index']);
+    Route::get('admin/view-order/{id}',[OrderController::class,'view']);
+    Route::put('update-order/{id}',[OrderController::class,'updateorder']);
+    Route::get('order-history',[OrderController::class,'orderhistory']);
+    
+    
     //Route::resource('categories',Admin\CategoryController::class);
 
 
@@ -100,8 +111,10 @@ Route::middleware(['auth'])->group(function (){
 
 
     Route::get('my-orders',[UserController::class,'index']);
+
+    Route::get('users',[DashboardController::class,'users']);
+    Route::get('view-user/{id}',[DashboardController::class,'viewuser']);
+
+    
+
 });
-// Route::get('/', function () {
-//     $size = App\Models\Size::all();
-//     return view('welcome',['size' => $size]);
-// });

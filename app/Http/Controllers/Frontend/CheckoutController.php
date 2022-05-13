@@ -61,7 +61,7 @@ class CheckoutController extends Controller
         $order->address1 = $request->input('address1'); 
         $order->address2 = $request->input('address2');
         $order->city = $request->input('city');
-         $order->state = $request->input('state');
+        $order->state = $request->input('state');
         $order->area = $request->input('area');
         $order->LGA = $request->input('LGA');
         //$order->tracking_no = 'cakes'.rand(1111,9999); 

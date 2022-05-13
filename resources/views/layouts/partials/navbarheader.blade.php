@@ -83,8 +83,16 @@
                                                 document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
-                                <a href="/admin" class="dropdown-item">Dashboard</a>
+                                
+                                @if (Auth::user()->role_as == '0')
+                                <a href="{{ url('user-profile') }}" class="dropdown-item">Profile</a>
+                                
+                              
+                                @else
+                                    <a href="{{ url('dashboard') }}" class="dropdown-item">Dashboard</a>
+                                
+                                
+                                <a href="{{ url('my-orders') }}" class="dropdown-item">My Orders</a>  @endif
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -122,7 +130,7 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="{{ ('wishlist') }}"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i> <span>3</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>
