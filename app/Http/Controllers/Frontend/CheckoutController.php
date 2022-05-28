@@ -20,6 +20,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+        //removes items that are not in stock or not up to the total the use added to cart
         $old_cartitems = Cart::where('user_id',Auth::id())->get();
         foreach($old_cartitems as $item)
         {
@@ -62,8 +63,15 @@ class CheckoutController extends Controller
         $order->address2 = $request->input('address2');
         $order->city = $request->input('city');
         $order->state = $request->input('state');
+        $order->area = $request->input('pincode');
         $order->area = $request->input('area');
         $order->LGA = $request->input('LGA');
+
+        $order->payment_mode = $request->input('payment_mode');
+        $order->payment_id = $request->input('payment_id');
+        //$order->flavour_id = $request->input('flavour_id');
+        //$order->size_id = $request->input('size_id');
+        //$order->cake_message = $request->input('cake_message');
         //$order->tracking_no = 'cakes'.rand(1111,9999); 
         
     
@@ -114,18 +122,45 @@ class CheckoutController extends Controller
         $cartitems = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cartitems);
 
+        if ($request->input('payment_mode') == "payment by Razorpay" || $request->input('payment_mode') == "paid by Paypal") 
+        {
+            return response()->json(['status' => "Order placed Successfully"]);
+        }
+
         return redirect('/')->with('status',"order placed successfully");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ModelCheckout
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
+    
+    public function razorpaycheck(Request $request)
     {
-        //
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        $total_price = 0;
+        foreach($cartitems as $item)
+        {
+           
+            $total_price += $item->products->selling_price * $item->prod_qty;
+        }
+
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+        $address1  =$request->input('address1');
+        $city   = $request->input('city');
+        $state = $request->input('state');
+        $pincode = $request->input('pincode');  
+        $phone  = $request->input('phone');
+        $email   = $request->input('email'); 
+
+        return response()->json([
+            'firstname'=>$firstname,
+            'lastname '=>$lastname,
+            'address1'=>$address1,
+            'city'=>$city,
+            'state'=>$state,
+            'pincode'=>$pincode,
+            'phone'=>$phone,
+            'email'=>$email,
+            'total_price'=>$total_price     
+        ]);
     }
 
     /**

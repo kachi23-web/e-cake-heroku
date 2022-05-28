@@ -1,4 +1,4 @@
-{{-- @extends('layouts.frontend') --}}
+
 @extends('layouts.css_Scripts')
 
 @section('title')
@@ -49,7 +49,7 @@
                                     <div class="featured__item">
                                         <div class="featured__item__pic set-bg" data-setbg="{{ asset('assets/uploads/products/'.$prod->image) }}" alt="Product image">
                                             <ul class="featured__item__pic__hover">
-                                                <li><a href="{{ url('cart') }}"><i class="fa fa-heart"></i></a></li>
+                                                <li><a href="{{ url('category/'.$category->slug.'/'.$prod->slug ) }}"><i class="fa fa-heart"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                                 <li><a href=" {{ url('category/'.$category->slug.'/'.$prod->slug ) }}"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>

@@ -10,7 +10,9 @@
                     </div>
                     <ul>
                         <li><a href="category/Wedding%20Cakes">Wedding Cakes</a></li>
-                        <li><a href="category/Birthday%20Cakes">celebration Cakes</a></li>
+                        <li><a href="category/Birthday%20Cakes">Birthday Cakes</a></li>
+                        <li><a href="category/Corporate%20Cakes">Corporate Cakes</a></li>
+
                         {{-- <ul>
                             <li><a hrf="#">Birthday Cakes</a></li>
                             <li><a hrf="#">Anniversary Cakes</a></li>

@@ -6,8 +6,8 @@
     </div>
     <div class="humberger__menu__cart">
         <ul>
-            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            <li><a href="{{ url('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li><a href="{{ url ('wishlist') }}"><i class="fa fa-heart"></i> <span class="wishlist-count">0</span></a></li>
+            <li><a href="{{ url('cart') }}"><i class="fa fa-shopping-bag"></i> <span class="cart-count">0</span></a></li>
         </ul>
         <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
@@ -33,7 +33,7 @@
 
         <div class="header__top__right__auth">
             @if (Route::has('register'))
-            <a href="{{ route('register') }}"<i class="fa fa-user"></i> Register</a>
+            <a href="{{ route('register') }}" <i class="fa fa-user"></i> Register</a>
             @endif
             @endauth
         </div>
@@ -41,11 +41,11 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="/">Home</a></li>
-                        <li ><a href="{{ url('category') }}">Shop</a></li>
+            <li class="{{ Request::is('/')? 'active':'' }}"><a href="/">Home</a></li>
+                        <li class="{{ Request::is('category')? 'active':'' }}"><a href="{{ url('category') }}">Shop</a></li>
                        
-                        <li><a href="./blog">Blog</a></li>
-                        <li><a href="./contact">Contact</a></li>
+                        <li class="{{ Request::is('blog')? 'active':'' }}"><a href="./blog">Blog</a></li>
+                        <li class="{{ Request::is('contact')? 'active':'' }}"><a href="./contact">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>

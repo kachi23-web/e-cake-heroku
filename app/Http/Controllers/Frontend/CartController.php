@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Size;
-
+use App\Models\Wishlist;
 
 class CartController extends Controller
 {
@@ -76,7 +76,7 @@ class CartController extends Controller
         }
         else
         {
-            return response()->json(['status' => "Login to Continue click here "]);
+            return response()->json(['status' => "Login to Continue click here ",redirect('login')]);
         }
 
     
@@ -107,6 +107,7 @@ class CartController extends Controller
 
  }
 
+
    public function deleteProduct(Request $request)
    {
     if(Auth::check())
@@ -122,10 +123,19 @@ class CartController extends Controller
     }
     else
     {
-        return response()->json(['status' => "Login to Continue".['category']]);
+         return response()->json(['status' => "Login to Continue".['category']]);
     }
    }
  
+
+    
+   public function  cartcount()
+   {
+       $cartcount = Cart::where('user_id', Auth::id())->count();
+       return response()->json(['count' => $cartcount]);
+   }
+
+  
    
 }
 

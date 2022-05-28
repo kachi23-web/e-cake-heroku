@@ -40,11 +40,11 @@
         <div class="row">
            
             <div class="col-lg-12">
-                <div class="shoping__cart__table">
+                <div class="shoping__cart__table ">
                     <table class="product_data">
                         <thead>
                             <tr>
-                                <th class="shoping__product">Products</th>
+                                <th class="shoping__product cartitems">Products</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
@@ -70,8 +70,9 @@
                                 </td>
                                 <td class="shoping__cart__quantity product_data">
 {{--                                     <input type="hidden" class="prod_id" >
- --}}                                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                    <div class="quantity"> 
+ --}}                             <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                                        @if($item ->products->qty > $item->prod_qty)
+                                        <div class="quantity"> 
                                         <div class="pro-qty">
                                         
                                             <span class=" changeQuantity dec decrement-btn  qtybtn">-</span>
@@ -86,8 +87,14 @@
                                     
                                 <td class="shoping__cart__total" value="{{ $item->$subtotal }}">
                                      @php $subtotal += $item->products->selling_price *  $item->prod_qty; @endphp 
-{{-- 
-                                    {{ $subtotal }} --}}
+                                    @else
+                                     <h6>Out of Stock</h6>
+                                     @endif
+                                    
+                                     {{--                               
+                                   
+    
+    {{ $subtotal }} --}}
                                 </td>
                                 
                                 <td class="shoping__cart__item__close">

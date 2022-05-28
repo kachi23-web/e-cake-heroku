@@ -15,17 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-
-   {{--  <link href="frontend/css/bootstrap.min.css" rel="stylesheet">
-    <link href="frontend/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
-    <link href="frontend/css/elegant-icons.css" rel="stylesheet">
-    <link href="frontend/css/nice-select.css" rel="stylesheet">
-    <link href="frontend/css/jquery-ui.min.css" rel="stylesheet">
-    <link href="frontend/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="frontend/css/slicknav.min.css" rel="stylesheet">
-    <link href="frontend/css/style.css" rel="stylesheet"> --}}
-    
+    <link href="{{ asset('frontend/css/bootstrap5.min.css') }}" rel="stylesheet">
 
      <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -35,7 +25,11 @@
     <link href="{{ asset('frontend/css/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/slicknav.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/vendor/animate/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/blog.css') }}" rel="stylesheet"> 
+
     
     
     <!-- <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
@@ -100,7 +94,12 @@
     @yield('content')
 
 </div>
+ <div class="whatsapp-chat">
+     <a href="https://wa.me/+234815669858?text=I'm%20interested%20in%20your%20car%20for%20sale" target= _blank>
 
+         <img src="{{ asset('assets/image/whatsapp.png') }}" alt="whatsapp-logo" height="60px"  width = "60px" srcset="">
+     </a>
+ </div>
     <footer class="footer spad">
 @include('layouts.partials.footer')
     </footer>
@@ -110,15 +109,7 @@
 
  <!-- Js Plugins -->
  
- {{-- <script src="frontend/js/jquery-3.3.1.min.js" ></script> 
- <script src="frontend/js/bootstrap.min.js" ></script>
- <script src="frontend/js/jquery-ui.min.js" ></script>
- <script src="frontend/js/jquery.slicknav.js" ></script>
- <script src="frontend/js/mixitup.min.js"></script>
- <script src="frontend/js/owl.carousel.min.js"></script>
- <script src="frontend/js/quantity.js"></script>
- <script src="frontend/js/main.js"></script> 
- <script src="frontend/js/cart.js"></script> --}}
+
 
 
   <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}" ></script> 
@@ -130,10 +121,29 @@
  <script src="{{ asset('frontend/js/jquery.slicknav.js') }}" ></script>
  <script src="{{ asset('frontend/js/mixitup.min.js') }}"></script>
  <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
- <script src="{{ asset('frontend/js/quantity.js') }}"></script>
+ <script src="{{ asset('frontend/vendor/wow/wow.min.js') }}"></script>
+ <script src="{{ asset('frontend/vendor/wow/theme.js') }}"></script>
+ <script src="{{ asset('frontend/vendor/easing/easing.min.js') }}"></script> 
+ <script src="{{ asset('frontend/js/custom.js') }}"></script>
  <script src="{{ asset('frontend/js/main.js') }}"></script> 
- <script src="{{ asset('frontend/js/cart.js') }}"></script>
+ <script src="{{ asset('frontend/vendor/main.js') }}"></script> 
+ <script src="{{ asset('frontend/vendor/waypoints/waypoints.min.js') }}"></script> 
+ <script src="{{ asset('frontend/js/checkout.js') }}"></script>
  
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6288537ab0d10b6f3e734e47/1g3i8c67v';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+    <!--End of Tawk.to Script-->
+
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
   @if(session('status'))

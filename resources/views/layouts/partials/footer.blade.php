@@ -54,9 +54,26 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+
+
+                <div class="p-t-40">
+                    <div class="flex-c-m flex-w p-b-18">
+                        <a href="#" class="m-all-1">
+                            <img src="{{ asset('assets/image/icon-pay-01.png') }}" alt="ICON-PAY">
+                        </a>
+    
+                        <a href="#" class="m-all-1">
+                            <img src="{{ asset('assets/image/icon-pay-02.png') }}" alt="ICON-PAY">
+                        </a>
+    
+                        <a href="#" class="m-all-1">
+                            <img src="{{ asset('assets/image/icon-pay-03.png') }}" alt="ICON-PAY">
+                        </a>
+                    </div>
+                
                 <div class="footer__copyright">
                     <div class="footer__copyright__text"><p>
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by <a href="#" target="_blank">Cross Wood</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by <a href="#" target="_blank">Probbity</a>
 </p></div>
                     <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                 </div>

@@ -34,9 +34,9 @@
     appearance: none;
 }
 
-.fa{
+/* .fa{
     width: 50%;
-}
+} */
 
 .order-details label{
     font-size: 12px;
@@ -46,4 +46,63 @@
 .order-details div{
     font-size: 10px;
     padding: 5px !important;
+}
+
+/* makes text red for the user details*/
+.checkout__form span{
+    color: red;
+}
+
+.whatsapp-chat{
+    bottom: 10px;
+    left: 10px;
+    position: fixed;
+}
+
+.input_detail{
+    width: 500px;
+    margin-right: 15px;
+}
+
+.flavour_id{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+
+/*blog, testimonial*/
+.title{
+    font-weight: 500;
+    color: #212529;
+}
+
+.text-red{
+    color: #dd1f58;
+    font-weight:900;
+}
+
+
+
+.testimonial-circle{
+    position: absolute !important;
+    justify-items: center !important;
+    top: 100px;
+    translate:var(middle);
+    background-color: rgb(247, 253, 253);
+    width: 60px;
+    height: 60px;
+    margin-left: 330px;
+    margin-top: 15px;
+    /* content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; */
+    
+}
+.testimonial-circle i{
+    color: blanchedalmond;
+}
+
+.testimonial-circle p{
+    font-size: 22px;
 }

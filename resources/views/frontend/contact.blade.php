@@ -37,7 +37,7 @@
                 <div class="contact__widget">
                     <span class="icon_phone"></span>
                     <h4>Phone</h4>
-                    <p>+01-3-8888-6868</p>
+                    <p>+234-909-048-1721</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -51,7 +51,7 @@
                 <div class="contact__widget">
                     <span class="icon_clock_alt"></span>
                     <h4>Open time</h4>
-                    <p>10:00 am to 23:00 pm</p>
+                    <p>07:00 am to 06:00 pm</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -76,8 +76,8 @@
         <div class="inside-widget">
             <h4>New York</h4>
             <ul>
-                <li>Phone: +12-345-6789</li>
-                <li>Add: 16 Creek Ave. Farmingdale, NY</li>
+                <li>Phone: +234-909-048-1721</li>
+                <li>Add: Tunga Market road,Minna</li>
             </ul>
         </div>
     </div>

@@ -7,24 +7,25 @@
                     <i class="fa fa-bars"></i>
                     <span>Cakes Gallery</span>
                 </div>
-                <ul>
-                    <li><a href="category/Wedding%20Cakes">Wedding Cakes</a></li>
-                    <li><a href="category/Birthday%20Cakes">celebration Cakes</a></li>
-                    {{-- <ul>
+              {{--  <ul>
+                    <li><a href={{ url('category/') }}>Wedding Cakes</a></li>
+                    <li><a href={{ url('category/'.$cate->slug)  }}>Birthday Cakes</a></li>
+                    <li><a href={{ url("category/Corporate%20Cakes") }}>Corporate Cakes</a></li>
+                     <ul>
                         <li><a hrf="#">Birthday Cakes</a></li>
                         <li><a hrf="#">Anniversary Cakes</a></li>
                         <li><a hrf="#">Graduation Cakes</a></li>
 
-                    </ul> --}}
+                    </ul> 
                     
-                    <li><a href="category/Queens%20Cakes">Queens Cakes</a></li>
+                    <li><a href={{ url('category/'.$cate->slug)  }}>Queens Cakes</a></li>
                     <li><a href="category/Small%20Chops">Small Chops</a></li>
                     <li><a href="category/Desert">Desert </a></li>
                     <li><a href="category/parfait">parfait</a></li>
                     <li><a href="category/Drinks">Drinks</a></li>
                     <li><a href="category/Snack">Snack</a></li>
 
-                </ul>
+                </ul>--}}
             </div>
         </div>
         <div class="col-lg-9">

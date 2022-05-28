@@ -3,11 +3,11 @@
     <div class="header__top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4 ">
                     <div class="header__top__left">
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 ">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -26,36 +26,6 @@
                         </div>
 
 
-                           {{--  @if (Route::has('login'))
-                                    @auth
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                                
-                                                {{ __(Auth::user()->name) }}
-                                        </a>
-          
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                            @else
-                                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500"><i class="fa fa-user"></i> Login</a>
-                        
-                        </div> &nbsp --}}
-                        {{--<div class="dropdown-divider"></div>
-                         <a class="dropdown-item" href="#">Log out</a> --}}
-                        
-                    
-
-                       {{--  <div class="header__top__right__auth">
-                            @if (Route::has('register'))
-                            <a href="{{ route('register') }}"<i class="fa fa-user"></i> Register</a>
-                            @endif
-                            @endauth
-                        </div>
-                        @endif --}}
-
-{{-- working on the navdar --}}
                 <div class="header__top__right__auth">
 
 
@@ -66,11 +36,6 @@
                             </li>
                         @endif
 
-                        {{-- @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif --}}
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -119,19 +84,19 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="/">Home</a></li>
-                        <li ><a href="{{ url('category') }}">Shop</a></li>
+                        <li class="{{ Request::is('/')? 'active':'' }}"><a href="/">Home</a></li>
+                        <li class="{{ Request::is('category')? 'active':'' }}"><a href="{{ url('category') }}">Shop</a></li>
                        
-                        <li><a href="./blog">Blog</a></li>
-                        <li><a href="./contact">Contact</a></li>
+                        <li class="{{ Request::is('blog')? 'active':'' }}"><a href="./blog">Blog</a></li>
+                        <li {{ Request::is('contact')? 'active':'' }}><a href="./contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="{{ ('wishlist') }}"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i> <span>3</span></a></li>
+                        <li><a href="{{ url ('wishlist') }}"><i class="fa fa-heart "></i> <span class="wishlist-count">0</span></a></li>
+                        <li><a href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>
                 </div>

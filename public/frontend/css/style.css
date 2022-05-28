@@ -2020,10 +2020,22 @@ s{
 
 .shoping__cart__table table tbody tr td.shoping__cart__item__close {
 	text-align: right;
+	
+}
+
+.shoping__cart__table table tbody tr td.shoping__cart__item__close  .addto{
+	font-size:smaller;
+	width: 120px;
+	min-width: 100%;
+}
+.shoping__cart__table table tbody tr td.shoping__cart__item__close .remove{
+	font-size: smaller;
+	width: 90px;
+	min-width: 100%;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item__close span {
-	font-size: 24px;
+	font-size:24px;
 	color: #dd1f58;
 	cursor: pointer;
 }

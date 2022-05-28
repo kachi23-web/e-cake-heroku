@@ -60,7 +60,7 @@
                                     <img src="img/blog/sidebar/sr-1.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
+                                    <h6>09 Kinds Of Cakes and Pastries<br />Healthy snacking</h6>
                                     <span>MAR 05, 2019</span>
                                 </div>
                             </a>
@@ -78,7 +78,7 @@
                                     <img src="img/blog/sidebar/sr-3.jpg" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
+                                    <h6>4 Principles Help You Lose <br />Weight With heathlty Drinks</h6>
                                     <span>MAR 05, 2019</span>
                                 </div>
                             </a>
@@ -89,9 +89,9 @@
                         <div class="blog__sidebar__item__tags">
                             <a href="#">Apple</a>
                             <a href="#">Beauty</a>
-                            <a href="#">Vegetables</a>
-                            <a href="#">Fruit</a>
-                            <a href="#">Healthy Food</a>
+                            <a href="#">Pastries</a>
+                            <a href="#">Drinks</a>
+                            <a href="#">Smoothies</a>
                             <a href="#">Lifestyle</a>
                         </div>
                     </div>

@@ -50,13 +50,15 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>First Name<span>*</span></p>
-                                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" name="fname" placeholder="Enter First Name">
+                                    <input type="text" class="form-control firstname" value="{{ Auth::user()->name }}" name="fname" required placeholder="Enter First Name">
+                                    <span id="fname_error" ></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Last Name<span>*</span></p>
-                                    <input type="text" class="form-control" value="{{ Auth::user()->lname }}" name="lname" placeholder="Enter last Name">
+                                    <input type="text" class="form-control lastname" value="{{ Auth::user()->lname }}" name="lname" required placeholder="Enter last Name">
+                                    <span id="lname_error"></span>
                                 </div>
                             </div>
                         </div>
@@ -66,33 +68,40 @@
                         </div> --}}
                         <div class="checkout__input">
                             <p>Address<span>*</span></p>
-                            <input type="text" placeholder="Street Address" class="checkout__input__add" value="{{ Auth::user()->address1 }}" name="address1">
+                            <input type="text" placeholder="Street Address" class="checkout__input__add address1" value="{{ Auth::user()->address1 }}" name="address1" required>
+                            <span id="address_error"></span>
                             <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
                         </div>
-                        <div class="checkout__input">
+                        <div class="checkout__input ">
                             <p>Town/City<span>*</span></p>
-                            <input type="text" value="{{ Auth::user()->city }}" name="city">
+                            <input type="text" value="{{ Auth::user()->city }}" class="city" name="city" >
+                            <span id="city_error"></span>
                         </div>
-                         <div class="checkout__input">
+                         <div class="checkout__input ">
                             <p>State<span>*</span></p>
-                            <input type="text" value="{{ Auth::user()->state }}" name="state">
+                            <input type="text" value="{{ Auth::user()->state }}" class="state" name="state">
+                            <span id="state_error"></span>
                         </div> 
-                        {{-- <div class="checkout__input">
-                            <p>Postcode / ZIP<span>*</span></p>
-                            <input type="text">
-                        </div> --}}
+                        <div class="checkout__input">
+                            <p>Pincode<span>*</span></p>
+                            <input type="text" class="pincode value="{{ Auth::user()->pincode }}" name="pincode">
+                            <span id="pincode_error"></span>
+                        </div> 
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Phone<span>*</span></p>
-                                    <input type="text" class="form-control" value="{{ Auth::user()->phone }}" name="phone" placeholder="Phone">
+                                    <input type="text" class="form-control phone" value="{{ Auth::user()->phone }}" name="phone"required placeholder="Phone">
+                                    <span id="phone_error"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text" class="form-control"  value="{{ Auth::user()->email }}" name="email" placeholder="Email">
+                                    <input type="text" class="form-control email"  value="{{ Auth::user()->email }}" name="email" required placeholder="Email">
+                                    <span id="email_error"></span>
                                 </div>
+                            
                             </div>
                         </div>
                         <div class="checkout__input__checkbox">
@@ -125,24 +134,48 @@
                         <div class="checkout__order">
                             <h4>Your Order</h4>                                
                            
-                            <div class="checkout__order__products">Products &nbsp;&nbsp;
-                                <thead>Quantity</thead> &nbsp;&nbsp;
-                                 <span>Total</span>
-                            </div>
+                            <div class="checkout__order__products"> 
+                                 <span style="font-size: 14px">please select your preferred delivery method</span> 
+                                <div class="">
+                                    <input type="radio" id="pickUp"
+                                     name="pickUp" value="pickUp" >
+                                    <label for="pickup">Pick Up</label>
+                              
+                                    <input type="radio" id="delivery"
+                                     name="delivery" value="delivery">
+                                    <label for="delivery">Home delivery</label>
+                            
+                                  </div>
+
+                            @if($cartItems->count() > 0)
+                                <table class="table">
+                                <th>Products</th> 
+                                <th>Quantity</th> 
+                                 <th>Total</th>
+                            
                             @php $grandtotal = 0; @endphp
                             @php $subtotal = 0; @endphp
                             @foreach ($cartItems as $item)
 
-                            <ul>
-                                <li>  {{ $item->products->name }} 
-                                        <span> {{ $item->products->prod_qty }} </span>
-                                    <span>  {{ $item->products->selling_price }}</span></li>
+                            <tr >
+                                <td> {{ $item->products->name }} </td>
+                                <td> {{ $item->prod_qty }} </td>
+                                <td> {{$item->products->selling_price * $item->prod_qty }} </td>
+                       
+                           {{--  <ul>
+                                <li>  
+                                    <span> {{ $item->products->name }} </span> 
+                                    <span> {{ $item->prod_qty }} </span>
+                                    <span>  {{ $item->selling_price }}</span></li>
                                 
-                            </ul>
+                            </ul> --}}
                             @php $subtotal += $item->products->selling_price; @endphp
                             @php $grandtotal += $item->products->selling_price *  $item->prod_qty + 500; @endphp
 
-                            @endforeach
+                            @endforeach 
+                            </tr> 
+                        </table>
+                    </div>
                             <div class="checkout__order__subtotal">Subtotal <span>{{ $subtotal }}</span></div>
                             
                             <div class="checkout__order__total">Total <span>{{  $grandtotal }}</span></div>
@@ -171,9 +204,18 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button type="submit"id="submit-btn" class="site-btn">PLACE ORDER </button>
-{{--                             <button type="submit" class="site-btn"><a href="https://ravesandbox.flutterwave.com/pay/z8zdgoswqelx"> PLACE ORDER</a> </button>
- --}}                        </div>
+                            <input type="hidden" name="payment_mode" value="COD">
+                            <button type="submit" id="submit-btn" class="site-btn submit-btn">PLACE ORDER | pay on delivery </button>
+                            <button type="button" id="" class="btn btn-success razorpay-btn">Pay with Razorpay </button>
+                            <button type="submit" class="btn btn-info" style="margin-bottom: 10px;"><a href="https://ravesandbox.flutterwave.com/pay/z8zdgoswqelx"> Pay with flutterwave</a> </button>
+                           
+                            <div id="paypal-button-container"></div>
+
+                            @else
+                                <h4>No Products in cart</h4>
+                            @endif
+                            
+                        </div>
                     </div>
                 </div>
             </form>
@@ -183,7 +225,11 @@
 <!-- Checkout Section End -->
 @endsection 
 
-<script src="{{ asset('jquery-3.6.0.min.js') }}"></script>
+ {{-- @section('scripts'); --}}
+    
+
+
+    {{-- <script src="{{ asset('frontend/js/jquery3.6.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
     </script>
@@ -199,17 +245,18 @@
 
     <script>
         
-
-        document.getElementById("submit-btn").addEventListener("click", function(event) {
-            event.preventDefault()
-            makePayment()
-            error: function(e)
+         document.getElementById("submit-btn").addEventListener("click", function(e) {
+            e.preventDefault();
+            makePayment();
+            
+             
+        error: function (e)
     {
        console.log(e);
     }
    
         });
-
+ 
         function makePayment() {
             FlutterwaveCheckout({
                 public_key: "FLWPUBK_TEST-3d322cefd02662ffe45d3b181b781950-X",
@@ -242,5 +289,76 @@
                 },
             });
         }
-        // }
+        
+    </script> --}}
+@section('scripts')
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AYs4gd9GBGJ4RBUloyLXF2vS0e4uYufxX7SGTu2CeAniHdnWZ8lLgRaRdaTIIzy3M22jkkj5_jzNxezZ" data-namespace="paypal_sdk"></script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+            paypal_sdk.Buttons({
+        createOrder: function(data, actions) {
+            // This function sets up the details of the transaction, including the amount and line item details.
+            return actions.order.create({
+            purchase_units: [{
+                amount: {
+                value: '{{ $grandtotal }}'
+                }
+            }]
+            });
+        },
+        onApprove: function(data, actions) {
+            // This function captures the funds from the transaction.
+            return actions.order.capture().then(function(details) {
+            // This function shows a transaction success message to your buyer.
+            //alert('Transaction completed by ' + details.payer.name.given_name);
+                    
+                var   firstname =$('.firstname').val();
+                var   lastname  =$('.lastname ').val();
+                var   address1  =$('.address1 ').val();
+                var   city      =$('.city     ').val();
+                var   state     =$('.state    ').val();
+                var   pincode   =$('.pincode  ').val();
+                var   phone     =$('.phone    ').val();
+                 var   email     =$('.email    ').val();
+
+            
+            $.ajax({
+                        method: "POST",
+                        url: "/place-order",
+                        data: {
+                            'fname': firstname,
+                            'lname': lastname,
+                            'email': email,
+                            'phone': phone,
+                            'address1': address1,
+                            'address2': address2,
+                            'city': city,
+                            'state': state,
+                            'pincode': pincode,
+                            'area': area,
+                            'LGA': LGA,
+                            'payment_mode': "Paid by Paypal",
+                            'payment_id': details.id,
+                            
+                        },
+                        
+                        success: function (response) {
+                            alert(response.status);
+                            //swal(responseb.status);
+                            windows.location.href="/my-order";
+                            
+                        }  
+                    });
+                    
+            });
+        }
+        }).render('#paypal-button-container');
+        //This function displays payment buttons on your web page.
+
     </script>
+@endsection 
+
+

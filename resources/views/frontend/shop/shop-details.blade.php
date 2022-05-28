@@ -114,8 +114,13 @@
                         vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                         quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p> --}}
                         <p>{{ $products->description }}</p>
-                        
-                    <div class="product__details__quantity">
+                        <hr>
+                        @if($products->qty > 0)
+                            <label for="" class="badge bg-success">In stock</label>
+                        @else
+                        <label for="" class="badge bg-danger">Out stock</label>
+                        @endif
+                            <div class="product__details__quantity">
                         <div class="quantity">
                             <input type="hidden" value="{{ $products->id }}" class="prod_id">
                             {{-- <div class="pro-qty">
@@ -147,14 +152,16 @@
                                 <div class="col-md-6 mb-3">
                                     
 
-                        <select class="form-select" name="flavour_id" >
+                        <select class="form-select input_detail flavour_id" name="flavour_id"  required >
                             <option value="">Select cake flavor</option>
                             @foreach($flavours as $flavour)
                              <option value="{{ $flavour->id }}" class="flav_select">{{ $flavour->cake_flavour }}</option>
                              @endforeach 
                         </select>
 
-                              <select class="form-select" name="size_id" >
+                        {{-- {{!! $products->description !! }} --}}
+
+                              <select class="form-select input_detail" name="size_id"  required>
                                 <option value="">Select cake Size</option>
                              @foreach($sizes as $size)
                              <option value="{{ $size->id }}" class="size_select">{{ $size->cake_size }}</option>
@@ -162,13 +169,13 @@
             
                             </select>
                             
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-3 ">
                             <label for="">Cake message</label>
-                            <textarea  row="3" name="cake_message" placeholder= "Enter your cake message here: Happy Anniversay, Happy Birthday Onyeka" class="form-control message"></textarea>
+                            <textarea  row="3" name="cake_message" style="width: 500px" placeholder= "Enter your cake message here: Happy Anniversay, Happy Birthday Onyeka" class="form-control message"></textarea>
                             </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="">Order Details</label>
-                                    <textarea row="3 " name="order_details" placeholder= "describe exactly what you want here: icing(fondant, butter cream eg), Color (red and green)" class="form-control"></textarea>
+                                    <textarea row="6" name="order_details" style="width: 500px"  placeholder= "describe exactly what you want here: icing(fondant, butter cream eg), Color (red and green)" class="form-control"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <input type="file" name="Custom_image" class="form-control">
@@ -181,13 +188,29 @@
                                 
 
                         </div>                    
-                            
+                        
 
                     <a href="#" class="primary-btn buyNow">BUY NOW<i class="fa fa-shopping-buy"></i></a>                        
-                    <button type="submit" class="primary-btn addToCartBtn">ADD TO CARD<i class="fa fa-shopping-cart"></i></button>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <a href="#" class="primary-btn addToWishlist">wishlist<span class="icon_heart_alt"></span></a>                        
+
+                    {{-- <a href="#" class="primary-btn h addToWishlist">wishlist<i class="fa fa-shopping-bag"></i></a>                         --}}
+
+                    <a href="#" class=" heart-icon"><span class="icon_heart_alt"></span></a> 
+                    
+               
+                       
                     <ul>
-                        <li><b>Availability</b> <span>In Stock</span></li>
+                        <li>
+                        <b>Availability</b> 
+                         @if($products->qty > 0)
+                         <button type="submit" class="primary-btn addToCartBtn">ADD TO CARD<i class="fa fa-shopping-cart"></i></button>
+
+                            <span class="badge bg-success">In Stock</span>
+                         @else
+                         <span class="badge bg-danger">Out Stock</span>
+                          @endif
+                        
+                        </li>
                         <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                         <li><b>Weight</b> <span>0.5 kg</span></li>
                         <li><b>Share on</b>

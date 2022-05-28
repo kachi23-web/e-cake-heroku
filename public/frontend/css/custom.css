@@ -1,0 +1,8 @@
+.testimonial-circle{
+    position: absolute;
+    justify-items: center;
+    top: 100px;
+    translate:var(middle);
+    
+}
+/* top-100 start-50 translate-middle d-flex align-items-center */

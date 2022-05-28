@@ -28,17 +28,22 @@ use App\Http\Controllers\SuperAdmin\FrontendController as SuperAdminFrontendCont
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/test', function () {
+     return view('test');
+ });
 
- Route::get('/',[FrontendController::class,'index']);
+ Route::Any('/',[FrontendController::class,'index']);
  Route::get('/blog',[FrontendController::class,'blog']);
  Route::get('/contact',[FrontendController::class,'contact']);
 
  Route::get('category',[FrontendController::class,'category']);
  Route::get('category/{slug}',[FrontendController::class,'viewcategory']);
- Route::Any('category/{cate_slug}/{prod_slug}',[FrontendController::class,'productview']);
+ Route::Any('category/{cate_id}/{prod_id}',[FrontendController::class,'productview']);
+ //Route::Any('category/{cate_slug || cate_id}/{prod_slug || prod_id}',[FrontendController::class,'productview']);
+
+ Route::Any('shoppingdetails',[FrontendController::class,'productview']);
+
+ 
  
 
 Auth::routes();
@@ -57,13 +62,20 @@ Auth::routes();
     Route::get('/dashboard', 'ADMIN\FrontendController@index');
     });   */
     
+    Route::get('load-cart-data',[CartController::class,'cartcount']);
+    Route::get('load-wishlist-data',[WishlistController::class,'wishcount']);
+
 
     Route::post('add-to-cart',[CartController::class,'insert']);
     Route::post('update-cart',[CartController::class,'updatecart']);
     Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
 
-   Route::middleware(['auth'])->group(function (){
-    Route::get('cart',[CartController::class,'viewcart']);
+    Route::any('addToWishlist', [WishlistController::class,'add']);
+    Route::post('delete-wishlist-item', [WishlistController::class,'deleteitem']);
+
+   
+    Route::middleware(['auth'])->group(function (){
+    Route::any('cart',[CartController::class,'viewcart']);
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::resource('tools',ToolsCartController::class);
 
@@ -71,6 +83,12 @@ Auth::routes();
     Route::get('view-order/{id}',[UserController::class,'view']);
 
     Route::get('wishlist', [WishlistController::class,'index']);
+    Route::post('proceed-to-pay', [CheckoutController::class,'razorpaycheck']);
+    
+    
+    
+
+    
 });
   Route::middleware(['auth','isAdmin']) -> group(function () {
     Route::get('/dashboard', 'SuperAdmin\FrontendController@index');

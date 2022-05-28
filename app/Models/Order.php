@@ -31,7 +31,10 @@ class Order extends Model
         'flavour',
         'size_id',
         'order_details',
+        'message',
         'tracking_no',
+        'payment_mode',
+        'payment_id',
 
     ];
     public function orderitems()

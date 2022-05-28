@@ -24,10 +24,10 @@ class Cart extends Model
     public function products()
     {
         return $this->belongsTo(Product::class,'prod_id','id');
-        }
+    }
 
         public function sizes()
     {
         return $this->belongsTo(Size::class,'size_id','id');
-        }
+    }
 }

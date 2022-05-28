@@ -23,14 +23,18 @@ class CreateOrdersTable extends Migration
             $table->string('address1');
             $table->string('address2');
             $table->string('phone');
+            $table->string('state');
+            $table->string('pincode')->nullable();
             $table->string('area');
             $table->string('LGA');
             $table->tinyInteger('status')->default('0');
-            $table->string('total_price')->nullable();
-            
+            $table->string('total_price');
+            $table->string('payment_mode');
+            $table->string('payment_id')->nullable();
             $table->string('cake_message')->nullable();
-            $table->string('flavour')->nullable();
-            $table->string('size_id')->nullable();
+            $table->string('flavour');
+            $table->string('size_id');
+            $table->string('message')->nullable();
             $table->string('order_details')->nullable();
             $table->string('tracking_no'); 
             $table->timestamps();
